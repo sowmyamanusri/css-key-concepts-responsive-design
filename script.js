@@ -128,3 +128,44 @@ const cats = [{
         species[i].innerText = `Species: ${cats[i].species}`
     }
 })();
+
+// toggle menu
+
+const toggle = document.querySelector('.toggle');
+const menu = document.querySelector('.menu');
+
+function toggleMenu() {
+    if (menu.classList.contains('active')) {
+        menu.classList.remove('active');
+        toggle.querySelector('a').innerHTML = "<i class ='fas fa-bars'>";
+    } else {
+        menu.classList.add('active');
+        toggle.querySelector('a').innerHTML = "<i class ='fas fa-times'>";
+    }
+
+}
+toggle.addEventListener('click', toggleMenu, false);
+
+
+//subMenu
+const items = document.querySelectorAll('.item');
+
+function toggleItem() {
+    if (this.classList.contains('submenu-active')) {
+        this.classList.remove('submenu-active');
+    } else if (menu.querySelector('.subMenu-active')) {
+        menu.querySelector('.submenu-active').classList.remove('submenu-active');
+        this.classList.add('submenu-active');
+    } else {
+        this.classList.add('submenu-active');
+    }
+}
+
+
+
+for (let item of items) {
+    if (item.querySelector('.submenu')) {
+        item.addEventListener('click', toggleItem, false);
+        item.addEventListener('keypress', toggleItem, false);
+    }
+}

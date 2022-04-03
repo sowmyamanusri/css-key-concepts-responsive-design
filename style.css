@@ -5,6 +5,11 @@
     --dark: #272932;
     --camel: #D8A47F;
 }
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin:0;
+}
 
 body {
     background-color: var(--light);
@@ -17,13 +22,122 @@ h1{
 }
 p{
     font-size:0.75rem;
+    margin-top: 0.5rem;
+}
+/*Navibar using flex box*/
+nav{
+    background-color:var(--dark);
+    padding: 0 0.8rem;
+}
+.logo{
+    color: var(--light);
+    padding:0.5rem 0.8rem 0.5rem 0;
+    font-size: 2rem;
+}
+
+nav a{
+   color:var(--light);
+   text-decoration: none;
+}
+.menu, .submenu{
+    list-style-type: none;
+}
+
+.item{
+    padding:0.8rem;
+}
+.item a:hover{
+    background-color: var(--light);
+    color: var(--dark);
+}
+/*---------Mobile menu ---*/
+.menu{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu li a{
+    display:block;
+    padding:0.8rem 0.4rem;
+}
+
+.menu li.submenu a{
+    padding:0.8rem;
+}
+
+.toggle{
+    order:1;
+    font-size:1.2rem;
+}
+.item{
+    order:2;
+    width:100%;
+    text-align:center;
+    display:none;
+    
+}
+.active .item{
+    display:block;
+}
+/* submenu */
+.submenu{
+    display:none;
+}
+.submenu-active .submenu{
+    display:block;
+}
+
+.has-submenu > a::after{
+    font-family:"Font Awesome 5 Free";
+    font-weight:900;
+    font-size:0.8rem;
+    line-height:1rem;
+    content:"\f078";
+    color:var(--light);
+    padding-left:0.3rem;
+}
+.submenu a{
+    padding: 0.8rem 1rem;
+}
+
+.submenu-active{
+    background-color:var(--dark);
+    border-radius: 0.2rem;
+}
+
+/* desktop menu*/
+@media all and (min-width:960px){
+.item{
+    position: relative;
+    display: block;
+    width: auto;
+}
+.submenu-active .submenu{
+    display: block;
+    position:absolute;
+    left: 0;
+    top:68px;
+    background-color:#111;
+}
+.toggle{
+    display: none;
+}
+.submenu-active{
+    border-radius: 0;
+}
+}
+/* card css*/
+.container{
+    margin: 0 0.8rem;
+
 }
 .card-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     border : 2px solid var(--dark);
-
+    margin-top:1rem;
 
 }
 
@@ -33,6 +147,7 @@ p{
     border: 1px solid var(--dark);
     border-radius: 0.25rem;
   box-shadow: 0 20px 40px -25px;
+   
     
 }
 .card h3{
@@ -48,3 +163,47 @@ img {
     text-align: center;
     font-size: 1rem;
 }
+
+@media only screen and (min-width:700px){
+    body{
+        background-color: var(--teal)
+    }
+  h1{
+   font-size:2.35rem;
+  }
+  p{
+      font-size:0.85rem
+  }
+  
+}
+
+@media only screen and (min-width:1000px){
+   body{
+        background-color: var(--light);
+   }
+    h1{
+     font-size:2.45rem;
+    }
+    p{
+        font-size:0.95rem;
+    }
+}
+
+@media only screen and (max-width:480px){
+    body{
+        background-color: var(--camel);
+    }
+    .paragraph{
+        display:none;
+    };
+    .logo{
+        font-size:1.5rem;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+      --body-background-color: var(--dark);
+       
+    }
+  }
